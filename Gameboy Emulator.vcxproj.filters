@@ -18,22 +18,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cpu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Registers.h">
-      <Filter>Header Files\CPU</Filter>
-    </ClInclude>
     <ClInclude Include="Memory.h">
       <Filter>Header Files\CPU</Filter>
     </ClInclude>
     <ClInclude Include="Operands.h">
       <Filter>Header Files\CPU</Filter>
     </ClInclude>
+    <ClInclude Include="cpu.h">
+      <Filter>Header Files\CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Registers.h">
+      <Filter>Header Files\CPU</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpu.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CPU</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -127,7 +127,7 @@
     <ClInclude Include="cpu.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Operands.h" />
-    <ClInclude Include="Registers.h" />
+    <ClInclude Include="src\Registers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cpu.cpp" />
