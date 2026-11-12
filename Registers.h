@@ -6,14 +6,14 @@
 #include <type_traits>
 
 
-enum class Reg8bit : uint8_t{ A, B, C, D, E, F, H, L };
+enum class Reg8Bit : uint8_t{ A, B, C, D, E, F, H, L };
 enum class Reg16Bit : uint8_t{ BC, DE, HL, AF, SP, PC};
 
 template <typename T>
-concept Register = std::same_as<T, Reg8bit> || std::same_as<T, Reg16Bit>;
+concept Register = std::same_as<T, Reg8Bit> || std::same_as<T, Reg16Bit>;
 
 template <auto RegisterName>
-inline constexpr bool Is8Bit = std::is_same_v<decltype(RegisterName), Reg8bit>;
+inline constexpr bool Is8Bit = std::is_same_v<decltype(RegisterName), Reg8Bit>;
 
 template <Register auto R>
 using RegisterValue = std::conditional_t<Is8Bit<R>, uint8_t, uint16_t>;
@@ -35,28 +35,28 @@ using RegisterValue = std::conditional_t<Is8Bit<R>, uint8_t, uint16_t>;
         {
             if constexpr (Is8Bit<R>)
             {
-                if constexpr (R == Reg8bit::A) 
+                if constexpr (R == Reg8Bit::A) 
                     return a;
 
-                else if constexpr (R == Reg8bit::B) 
+                else if constexpr (R == Reg8Bit::B) 
                     return b;
 
-                else if constexpr (R == Reg8bit::C) 
+                else if constexpr (R == Reg8Bit::C) 
                     return c;
 
-                else if constexpr (R == Reg8bit::D) 
+                else if constexpr (R == Reg8Bit::D) 
                     return d;
 
-                else if constexpr (R == Reg8bit::E) 
+                else if constexpr (R == Reg8Bit::E) 
                     return e;
 
-                else if constexpr (R == Reg8bit::F) 
+                else if constexpr (R == Reg8Bit::F) 
                     return f;
 
-                else if constexpr (R == Reg8bit::H) 
+                else if constexpr (R == Reg8Bit::H) 
                     return h;
 
-                else if constexpr (R == Reg8bit::L) 
+                else if constexpr (R == Reg8Bit::L) 
                     return l;
             }
             else
@@ -86,28 +86,28 @@ using RegisterValue = std::conditional_t<Is8Bit<R>, uint8_t, uint16_t>;
         {
             if constexpr (Is8Bit<R>)
             {
-                if constexpr (R == Reg8bit::A)
+                if constexpr (R == Reg8Bit::A)
                     a = value;
 
-                else if constexpr (R == Reg8bit::B)
+                else if constexpr (R == Reg8Bit::B)
                     b = value;
 
-                else if constexpr (R == Reg8bit::C)
+                else if constexpr (R == Reg8Bit::C)
                     c = value;
 
-                else if constexpr (R == Reg8bit::D)
+                else if constexpr (R == Reg8Bit::D)
                     d = value;
 
-                else if constexpr (R == Reg8bit::E)
+                else if constexpr (R == Reg8Bit::E)
                     e = value;
 
-                else if constexpr (R == Reg8bit::F)
+                else if constexpr (R == Reg8Bit::F)
                     f = value & 0xF0;
 
-                else if constexpr (R == Reg8bit::H)
+                else if constexpr (R == Reg8Bit::H)
                     h = value;
 
-                else if constexpr (R == Reg8bit::L)
+                else if constexpr (R == Reg8Bit::L)
                     l = value;
             }
             else

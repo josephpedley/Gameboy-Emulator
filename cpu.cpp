@@ -15,20 +15,20 @@ int CPU::Step()
 		return 4;
 
 	case 0x01: // LD BC, d16
-		registers.Set<Reg16Bit::BC>(Fetch16bit());
-		return 12;
+		LoadImmediate<Reg16Bit::BC>();
+				return 12;
 
 	case 0x02: // LD (BC), A
-		memory.WriteByte(registers.Get<Reg16Bit::BC>(),
-						 registers.Get<Reg8bit::A>());
+		StoreInMemory<Reg16Bit::BC, Reg8Bit::A>;
 		return 8;
 
 	case 0x03: // INC BC
-		registers.Set<Reg16Bit::BC>(registers.Get<Reg16Bit::BC>() + 1);
+		Increment<Reg16Bit::BC>();
 		return 8;
 
 	case 0x06: // LD B, d8
-		return WriteByteIntoRegister(registers.regB, Fetch());
+		LoadImmediate<Reg8Bit::B>();
+		return 8;
 
 	default:
 		return 0;
