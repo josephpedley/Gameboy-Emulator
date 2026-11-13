@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Cpu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Cpu.h" />
+    <ClInclude Include="src\Memory.h" />
+    <ClInclude Include="src\Instructions.h" />
+    <ClInclude Include="src\Registers.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -123,15 +132,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="cpu.h" />
-    <ClInclude Include="Memory.h" />
-    <ClInclude Include="Operands.h" />
-    <ClInclude Include="src\Registers.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="cpu.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

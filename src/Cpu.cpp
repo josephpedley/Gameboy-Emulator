@@ -26,9 +26,18 @@ int CPU::Step()
 		Increment<Reg16Bit::BC>();
 		return 8;
 
+	case 0x04:
+		Increment<Reg8Bit::B>();
+		return 4;
+
+	case 0x05:
+		Decrement<Reg8Bit::B>();
+		return 4;
+
 	case 0x06: // LD B, d8
 		LoadImmediate<Reg8Bit::B>();
 		return 8;
+
 
 	default:
 		return 0;
@@ -37,7 +46,7 @@ int CPU::Step()
 
 uint8_t CPU::Fetch()
 {
-	return memory.ReadByte(registers.programCounter++);
+	return memory.ReadByte(registers.pc++);
 }
 
 uint16_t CPU::Fetch16bit()

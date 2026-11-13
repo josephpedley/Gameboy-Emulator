@@ -29,6 +29,11 @@ private:
 	template <Register auto R>
 	void Increment();
 
+	template <Register auto R>
+	void Decrement();
+
+	void RLCA();
+
 	// -------------------- Fetch Instructions --------------------------
 
 	uint8_t Fetch();

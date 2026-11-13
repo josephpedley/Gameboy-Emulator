@@ -1,10 +1,8 @@
 #pragma once
 
-#include <cstdint>
-
 #include <concepts>
+#include <cstdint>
 #include <type_traits>
-
 
 enum class Reg8Bit : uint8_t{ A, B, C, D, E, F, H, L };
 enum class Reg16Bit : uint8_t{ BC, DE, HL, AF, SP, PC};
@@ -18,8 +16,9 @@ inline constexpr bool Is8Bit = std::is_same_v<decltype(RegisterName), Reg8Bit>;
 template <Register auto R>
 using RegisterValue = std::conditional_t<Is8Bit<R>, uint8_t, uint16_t>;
 
+enum class Flag : uint8_t{Zero = 7, Subtract = 6, HalfCarry = 5, Carry = 4};
 
-    struct Registers
+     struct Registers
     {
         uint8_t a{}, b{}, c{}, d{}, e{}, f{}, h{}, l{};
         uint16_t sp{}, pc{};
@@ -133,7 +132,26 @@ using RegisterValue = std::conditional_t<Is8Bit<R>, uint8_t, uint16_t>;
                     pc = value;
             }
         }
-    };
+
+        void SetFlag(Flag flag, bool isSet)
+        {
+            uint8_t flagBits = Get<Reg8Bit::F>();
+            uint8_t flagMask = 1 << static_cast<uint8_t>(1 << static_cast<uint8_t>(flag));
+
+            if (isSet)
+                flagBits |= flagMask; // set only flag
+
+            else
+                flagBits &= ~flagMask; // clear only flag
+
+            Set<Reg8Bit::F>(flagBits);
+        }
+
+       bool GetFlag(Flag flag) const
+       { 
+           return (Get<Reg8Bit::F>() >> static_cast<uint8_t>(flag)) & 1;
+        }
+};
 
 
 
